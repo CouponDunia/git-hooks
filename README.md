@@ -7,7 +7,7 @@ branch) basis.
 # Quick Install
 
 ```
-bash <(curl -fsSL https://raw.github.com/jadb/git-hooks/master/install)
+bash <(curl -fsSL https://raw.github.com/AD7six/git-hooks/master/install)
 ```
 
 # Conventional Install

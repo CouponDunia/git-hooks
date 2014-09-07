@@ -1,4 +1,4 @@
 #!/usr/bin/env bash -e
 
-git clone https://github.com/jadb/git-hooks ~/.git-hooks
+git clone https://github.com/AD7six/git-hooks ~/.git-hooks
 cd ~/.git-hooks && make install
