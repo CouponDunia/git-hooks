@@ -4,7 +4,13 @@ Various git hooks, mix and match however you want on a project by project (and e
 branch) basis.
 
 
-# Install
+# Quick Install
+
+```
+bash <(curl -fsSL https://raw.github.com/AD7six/git-hooks/master/install)
+```
+
+# Conventional Install
 
 Installing this repo is comprised of two steps.
 
