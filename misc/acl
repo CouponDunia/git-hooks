@@ -1,0 +1,11 @@
+#!/bin/bash
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+AUTHORINFO=$(git var GIT_AUTHOR_IDENT) || exit 1
+NAME=$(printf '%s\n' "${AUTHORINFO}" | sed -n 's/^\(.*\) <.*$/\1/p')
+EMAIL=$(printf '%s\n' "${AUTHORINFO}" | sed -n 's/^.* <\(.*\)> .*$/\1/p')
+echo ${BRANCH}
+if [ "${NAME}" != rachita ]
+then
+   echo "No access"
+    exit 1
+fi

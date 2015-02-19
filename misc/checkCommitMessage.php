@@ -21,7 +21,7 @@ preg_match('/(\w+\-\d+)/i', $commitMessage, $matches);
 if(empty($matches))
 {
 	// match was not found
-	echo "Please mention the ISSUE ID in the commit message. The format is CW-12";
+	echo "[POLICY] mention the ISSUE ID in the commit message. The format is CW-12";
 	$status = 1;
 }
 

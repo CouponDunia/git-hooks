@@ -24,5 +24,8 @@ $config = array(
 		'commit-msg' => array(
 			'misc/checkCommitMessage.php' => true
 		),
+		'pre-commit' => array(
+			'misc/acl' => true
+		)
 	)
 );
