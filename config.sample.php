@@ -21,39 +21,8 @@ $config = array(
 	'hotfix/*' => array(),
 	'support/*' => array(),
 	'*' => array(
-		/*'pre-commit' => array(
-			//'php/lint.php' => true,
-			'js/lint.php' => true,
-			'php/phpcs.php',
-			'php/phpunit.php',
-			'images/optimize.php',
-		),*/
 		'commit-msg' => array(
 			'misc/checkCommitMessage.php' => true
 		),
-		/*'prepare-commit-msg' => array(
-			//'flow/commitMessageWarn.php'
-		),*/
-		/*'post-commit' => array(
-			'misc/playSuccess',
-		),*/
-		/*'php' => array(
-			'lint' => array(
-				'pattern' => '/\.php$/'
-			),
-			'phpcs' => array(
-				'-n' => true,
-				'-s' => true,
-				'--extensions' => 'php,ctp',
-				'--encoding' => 'UTF-8',
-				'--standard' => 'CakePHP',
-				'--report-width' => trim(`tput cols`)
-			)
-		),*/
-		/*'js' => array(
-			'lint' => array(
-				'pattern' => '/\.js$/'
-			)
-		)*/
 	)
 );
