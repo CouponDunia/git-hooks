@@ -49,6 +49,11 @@ install() {
 		let i++
 	done
 
+	VERSION=$(cd $src && git rev-parse HEAD)
+	touch $base/hooks-version
+	echo "${VERSION}" > $base/hooks-version
+	echo "Recorded in $base/hooks-version"
+
 	echo "Installing files:"
 	echo ""
 	for ((j=0;j<$i;j++)) do

@@ -189,3 +189,25 @@ function copyFiles($files, $name = null) {
 
 	return $return;
 }
+
+function updated() {
+	echo "Checking hooks version" . PHP_EOL;
+	$cmd = "git ls-remote https://github.com/CouponDunia/git-hooks.git HEAD";
+	exec($cmd, $output, $return);
+
+	if(!$return)
+	{
+		// get the commit ref
+		$new_commit = explode("\t", $output[0]);
+		$new_ref = trim($new_commit[0]);
+		echo "Hooks Version: {$new_ref}" . PHP_EOL;
+		// get current version from .git/hooks/hooks-version
+		$cur_ref = trim(file_get_contents('.git/hooks/hooks-version'));
+		echo "Your Hooks Version: {$cur_ref}" . PHP_EOL;
+		// compare commits and exit
+		if(strcmp($new_ref, $cur_ref) == 0)
+			return true;
+	}
+
+	return false;
+}
