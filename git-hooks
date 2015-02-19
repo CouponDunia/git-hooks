@@ -72,8 +72,9 @@ install() {
 
 update() {
 	src='%sourcedir%'
-
-	cd $src && git pull && cd $src && sudo make install
+	base="$PWD"
+	
+	cd $src && git pull && cd $src && sudo make install && cd $base && git hooks install
 	echo "Updated"
 	exit 0
 }
