@@ -70,6 +70,26 @@ install() {
 	exit 0
 }
 
+update() {
+	base=
+	src='%sourcedir%'
+
+	if [ -d .git/hooks ]; then
+		base=.git/hooks
+	elif [ -d hooks ]; then
+		base=hooks
+	else
+		echo "This script needs to be run whilst in the root of your git project"
+		exit 1
+	fi
+	
+	cd $src && git pull
+	cd $src && sudo make install
+	cd $base && git hooks install
+	echo "Updated"
+	exit 0
+}
+
 main() {
 	if [ $# -lt 1 ]; then
 		usage
@@ -81,6 +101,10 @@ main() {
 		exit 1
 	fi
 
+	if [ "$1" == "update" ];then 
+		update
+		exit 1
+	fi
 	usage
 	exit 1
 }
