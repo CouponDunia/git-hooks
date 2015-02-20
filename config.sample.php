@@ -21,11 +21,11 @@ $config = array(
 	'hotfix/*' => array(),
 	'support/*' => array(),
 	'*' => array(
+		'pre-commit' => array(
+			'misc/checkAcl' => true
+		),
 		'commit-msg' => array(
 			'misc/checkCommitMessage.php' => true
-		),
-		'pre-commit' => array(
-			'misc/acl' => true
 		)
 	)
 );

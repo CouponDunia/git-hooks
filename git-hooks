@@ -29,10 +29,7 @@ install() {
 		fi
 
 		if [[ $f = "config.sample.php" ]]; then
-			if [[ -e $base/config.php ]]; then
-				continue
-			fi
-			commands[$i]="cp $src/$f $base/config.php"
+			commands[$i]="cp -f $src/$f $base/config.php"
 		else
 			commands[$i]="ln -sf $src/$f $base/"
 		fi

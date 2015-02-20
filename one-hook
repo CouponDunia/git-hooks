@@ -9,9 +9,9 @@ if (empty($config[$file])) {
 }
 
 // check if hooks is updated
-if(!updated())
+$bUpdated = updated();
+if($bUpdated == false)
 {
-    echo "Please update git hooks" . PHP_EOL;
     exit(1);
 }
 

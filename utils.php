@@ -191,7 +191,17 @@ function copyFiles($files, $name = null) {
 }
 
 function updated() {
-	echo "Checking hooks version" . PHP_EOL;
+	echo "[INFO] Checking hooks version" . PHP_EOL;
+
+	// check internet connection
+	$bIsConnected = check_internet_connection();
+	if(!$bIsConnected)
+	{
+		echo "[INFO] You don't have internet connection. It need for updating hooks." . PHP_EOL;
+		return 2;
+	}
+
+
 	$cmd = "git ls-remote https://github.com/CouponDunia/git-hooks.git HEAD";
 	exec($cmd, $output, $return);
 
@@ -200,14 +210,26 @@ function updated() {
 		// get the commit ref
 		$new_commit = explode("\t", $output[0]);
 		$new_ref = trim($new_commit[0]);
-		echo "Hooks Version: {$new_ref}" . PHP_EOL;
+		echo "[INFO] Hooks Version: {$new_ref}" . PHP_EOL;
 		// get current version from .git/hooks/hooks-version
 		$cur_ref = trim(file_get_contents('.git/hooks/hooks-version'));
-		echo "Your Hooks Version: {$cur_ref}" . PHP_EOL;
+		echo "[INFO] Your Hooks Version: {$cur_ref}" . PHP_EOL;
 		// compare commits and exit
 		if(strcmp($new_ref, $cur_ref) == 0)
 			return true;
 	}
 
+	echo "[URGENT] Please update your hooks with command: 'git hooks update'" . PHP_EOL;
 	return false;
+}
+
+/**
+ * Check Internet Connection.
+ * 
+ * @param            string $sCheckHost Default: www.google.com
+ * @return           boolean
+ */
+function check_internet_connection($sCheckHost = 'www.google.com') 
+{
+    return (bool) @fsockopen($sCheckHost, 80, $iErrno, $sErrStr, 5);
 }

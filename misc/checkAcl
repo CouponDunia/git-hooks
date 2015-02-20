@@ -1,0 +1,45 @@
+#!/usr/bin/env php
+<?php
+	require $_SERVER['PWD'] . '/.git/hooks/utils.php';
+
+	// get the branch name
+	exec("git rev-parse --abbrev-ref HEAD", $branch_output, $branch_return);
+	$branch_name = $branch_output[0];
+
+	// get the author's name
+	exec("git var GIT_AUTHOR_IDENT", $author_output, $author_return);
+	
+	$re = "/^(\\w*) \\<.*$/i";  
+	preg_match($re, $author_output[0], $matches);
+	$author_name = $matches[1];
+
+	// get the author's email
+	$re = "/^.* \<(.*)\> .*$/i";
+	preg_match($re, $author_output[0], $matches);
+	$author_email = $matches[1];
+
+	$exit = 0;
+	// load acl list from file
+	$acl = file_get_contents(".git/hooks/acl");
+	$acl_list = json_decode($acl);
+	foreach ($acl_list as $branch => $authors) {
+		// check if acl list has a rule for current branch
+		if(strcmp($branch_name, $branch) == 0)
+		{
+			// the current branch matches a rule
+			// check if the author is allowed to commit to this branch
+			if(in_array($author_name, $authors))
+			{
+				$exit = 0;
+			}
+			else
+			{
+				echo "[WARNING] You are not allowed to commit to this branch." . PHP_EOL;
+				$exit = 1;
+			}
+			break;
+		}
+	}
+
+	exit($exit);
+?>

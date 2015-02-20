@@ -1,21 +1,21 @@
 {
-	'develop_new': {
-		'nagpall',
-		'rmohan27',
-		'kushalhalder',
-		'ronaksvyas',
-		'sagarborse'
-	},
-	'qa': {
-		'nagpall',
-		'rmohan27',
-		'kushalhalder',
-		'vivekmarakana'
-	},
-	'india2.1': {
-		'nagpall',
-		'rmohan27',
-		'kushalhalder',
-		'vivekmarakana'
-	}
+  "develop_new": [
+    "nagpall",
+    "rmohan27",
+    "kushalhalder",
+    "ronaksvyas",
+    "sagarborse"
+  ],
+  "qa": [
+    "nagpall",
+    "rmohan27",
+    "kushalhalder",
+    "vivekmarakana"
+  ],
+  "india2.1": [
+    "nagpall",
+    "rmohan27",
+    "vivekmarakana",
+    "kushalhalder"
+  ]
 }
