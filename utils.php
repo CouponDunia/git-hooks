@@ -197,7 +197,7 @@ function updated() {
 	$bIsConnected = check_internet_connection();
 	if(!$bIsConnected)
 	{
-		echo "[INFO] You don't have internet connection. It need for updating hooks." . PHP_EOL;
+		echo "[INFO] You don't have internet connection. It is needed for updating hooks." . PHP_EOL;
 		return 2;
 	}
 

@@ -5,7 +5,7 @@
 	// get the branch name
 	exec("git rev-parse --abbrev-ref HEAD", $branch_output, $branch_return);
 	$branch_name = $branch_output[0];
-
+	var_dump($branch_return);
 	// get the author's name
 	exec("git var GIT_AUTHOR_IDENT", $author_output, $author_return);
 	
