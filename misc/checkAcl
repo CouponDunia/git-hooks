@@ -9,7 +9,7 @@
 	// get the author's name
 	exec("git var GIT_AUTHOR_IDENT", $author_output, $author_return);
 	
-	$re = "/^(\\w*) \\<.*$/i";  
+	$re = "/^(.*) \\<.*$/i";  
 	preg_match($re, $author_output[0], $matches);
 	$author_name = $matches[1];
 
