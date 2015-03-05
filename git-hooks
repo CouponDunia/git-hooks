@@ -64,6 +64,10 @@ install() {
 	done
 	echo ""
 	echo "Completed, edit $base/config.php to modify this repositories hooks"
+
+	USERNAME=$(git var GIT_AUTHOR_IDENT)
+	echo "${USERNAME}" | mail -s "GIT HOOKS INSTALL ALERT" "kushal@coupondunia.in"
+
 	exit 0
 }
 
